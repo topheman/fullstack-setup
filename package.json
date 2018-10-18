@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:sub-project": "npm run --prefix sub-project test",
+    "test": "npm run --silent test:sub-project",
+    "lint:sub-project": "npm run --prefix sub-project lint",
+    "lint": "npm run --silent lint:sub-project",
     "pretty": "npx prettier --write '**/*.{js,jsx,json,css,scss}'"
   },
   "keywords": [],
