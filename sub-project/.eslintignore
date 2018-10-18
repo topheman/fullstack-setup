@@ -1,0 +1,6 @@
+/build/**
+/coverage/**
+/docs/**
+/tmp/**
+/src/libs/**
+/react-modules/**
