@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('You must use Yarn to install, not NPM')\"",
+    "postinstall": "yarn --cwd sub-project install",
     "test:sub-project": "npm run --prefix sub-project test",
     "test": "npm run --silent test:sub-project",
     "lint:sub-project": "npm run --prefix sub-project lint",
