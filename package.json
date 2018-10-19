@@ -8,12 +8,27 @@
     "test": "npm run --silent test:sub-project",
     "lint:sub-project": "npm run --prefix sub-project lint",
     "lint": "npm run --silent lint:sub-project",
-    "pretty": "npx prettier --write '**/*.{js,jsx,json,css,scss}'"
+    "pretty": "npx prettier --write '**/*.{js,jsx,json,css,scss}'",
+    "lint:precommit": "npm run lint",
+    "test:precommit": "npm test"
   },
   "keywords": [],
   "author": "Christophe Rosset <tophe@topheman.com> (http://labs.topheman.com/)",
   "license": "MIT",
+  "lint-staged": {
+    "**/*.{js,jsx,json,css,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run lint:precommit && npm run test:precommit"
+    }
+  },
   "devDependencies": {
+    "husky": "^1.1.2",
+    "lint-staged": "^7.3.0",
     "prettier": "1.14.3"
   }
 }
